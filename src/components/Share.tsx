@@ -1,45 +1,45 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 export default function Share() {
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState(false)
 
-  const pageUrl = typeof window !== "undefined" ? window.location.href : "";
-  const shareText = "우리 아기의 돌잔치에 초대합니다! 💕";
+  const pageUrl = typeof window !== 'undefined' ? window.location.href : ''
+  const shareText = '우리 아기의 돌잔치에 초대합니다! 💕'
 
   const shareOptions = [
     {
-      name: "KakaoTalk",
-      icon: "💬",
+      name: 'KakaoTalk',
+      icon: '💬',
       onClick: () => {
-        const link = `https://story.kakao.com/s/write?urlInfo=${encodeURIComponent(pageUrl)}`;
-        window.open(link, "_blank");
+        const link = `https://story.kakao.com/s/write?urlInfo=${encodeURIComponent(pageUrl)}`
+        window.open(link, '_blank')
       },
     },
     {
-      name: "Instagram",
-      icon: "📸",
+      name: 'Instagram',
+      icon: '📸',
       onClick: () => {
-        alert("Instagram 스토리에 직접 공유해주세요!");
+        alert('Instagram 스토리에 직접 공유해주세요!')
       },
     },
     {
-      name: "Facebook",
-      icon: "👍",
+      name: 'Facebook',
+      icon: '👍',
       onClick: () => {
-        const link = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
-        window.open(link, "_blank");
+        const link = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`
+        window.open(link, '_blank')
       },
     },
     {
-      name: "링크 복사",
-      icon: "🔗",
+      name: '링크 복사',
+      icon: '🔗',
       onClick: () => {
-        navigator.clipboard.writeText(pageUrl);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+        navigator.clipboard.writeText(pageUrl)
+        setCopied(true)
+        setTimeout(() => setCopied(false), 2000)
       },
     },
-  ];
+  ]
 
   return (
     <section className="container-section bg-white">
@@ -62,7 +62,7 @@ export default function Share() {
               <span className="text-sm font-medium text-korean-navy">
                 {option.name}
               </span>
-              {copied && option.name === "링크 복사" && (
+              {copied && option.name === '링크 복사' && (
                 <span className="text-xs text-korean-red mt-2">✓ 복사됨</span>
               )}
             </button>
@@ -79,5 +79,5 @@ export default function Share() {
         </div>
       </div>
     </section>
-  );
+  )
 }

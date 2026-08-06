@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
 interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
+  days: number
+  hours: number
+  minutes: number
+  seconds: number
 }
 
 export default function Countdown() {
@@ -13,13 +13,13 @@ export default function Countdown() {
     hours: 0,
     minutes: 0,
     seconds: 0,
-  });
+  })
 
   useEffect(() => {
     const calculateTime = () => {
-      const targetDate = new Date("2024-12-25T11:00:00").getTime();
-      const now = new Date().getTime();
-      const difference = targetDate - now;
+      const targetDate = new Date('2024-12-25T11:00:00').getTime()
+      const now = new Date().getTime()
+      const difference = targetDate - now
 
       if (difference > 0) {
         setTimeLeft({
@@ -27,32 +27,32 @@ export default function Countdown() {
           hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
           minutes: Math.floor((difference / 1000 / 60) % 60),
           seconds: Math.floor((difference / 1000) % 60),
-        });
+        })
       }
-    };
+    }
 
-    calculateTime();
-    const interval = setInterval(calculateTime, 1000);
+    calculateTime()
+    const interval = setInterval(calculateTime, 1000)
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(interval)
+  }, [])
 
   const CountdownUnit = ({
     value,
     label,
   }: {
-    value: number;
-    label: string;
+    value: number
+    label: string
   }) => (
     <div className="flex flex-col items-center">
       <div className="bg-gradient-to-br from-korean-red to-korean-navy w-20 h-20 md:w-24 md:h-24 rounded-lg flex items-center justify-center shadow-lg">
         <span className="text-3xl md:text-4xl font-bold text-white">
-          {String(value).padStart(2, "0")}
+          {String(value).padStart(2, '0')}
         </span>
       </div>
       <p className="mt-3 text-korean-navy font-medium">{label}</p>
     </div>
-  );
+  )
 
   return (
     <section className="container-section bg-white">
@@ -72,5 +72,5 @@ export default function Countdown() {
         </div>
       </div>
     </section>
-  );
+  )
 }

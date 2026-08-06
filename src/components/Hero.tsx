@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
 interface HeroProps {
-  onRsvpClick: () => void;
+  onRsvpClick: () => void
 }
 
 export default function Hero({ onRsvpClick }: HeroProps) {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+    setIsLoaded(true)
+  }, [])
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -17,13 +17,13 @@ export default function Hero({ onRsvpClick }: HeroProps) {
         className="absolute inset-0 bg-gradient-to-br from-korean-cream via-pink-100 to-korean-cream opacity-50"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 50%, rgba(212,175,55,0.1), transparent 50%)",
+            'radial-gradient(circle at 20% 50%, rgba(212,175,55,0.1), transparent 50%)',
         }}
       />
 
       <div className="relative z-10 text-center px-4 max-w-2xl mx-auto">
         <div
-          className={`transition-all duration-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
           <p className="text-korean-red text-lg md:text-xl font-medium mb-4">
             우리 아기의 소중한 날
@@ -47,7 +47,7 @@ export default function Hero({ onRsvpClick }: HeroProps) {
         </div>
 
         <div
-          className={`mt-16 transition-all duration-1000 delay-300 ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
+          className={`mt-16 transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
         >
           <div className="inline-block">
             <img
@@ -75,5 +75,5 @@ export default function Hero({ onRsvpClick }: HeroProps) {
         </svg>
       </div>
     </section>
-  );
+  )
 }

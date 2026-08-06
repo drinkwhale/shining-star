@@ -16,12 +16,38 @@ GitHub Pages를 활용한 현대적이고 한국적인 돌잔치 초대장 웹�
 - **한글 폰트**: Noto Sans KR, Noto Serif KR 사용
 - **부드러운 애니메이션**: 페이드인, 슬라이드업 등 섬세한 모션
 
+## 📚 문서
+
+> **💡 개발을 시작하기 전에 아래 가이드를 확인하세요!**
+
+### 📖 주요 문서
+
+| 문서                                                                               | 설명                                        | 대상   |
+| ---------------------------------------------------------------------------------- | ------------------------------------------- | ------ |
+| **[docs/README.md](./docs/README.md)**                                             | 📋 전체 문서 인덱스 및 네비게이션           | 모두   |
+| **[docs/TASK_MANAGEMENT.md](./docs/TASK_MANAGEMENT.md)**                           | 🎯 Phase 1-3 작업 계획 및 체크리스트        | 개발자 |
+| **[docs/API_SETUP.md](./docs/API_SETUP.md)**                                       | 🔧 Firebase, 카카오맵 API 설정              | 개발자 |
+| **[docs/guides/ENVIRONMENT_VARIABLES.md](./docs/guides/ENVIRONMENT_VARIABLES.md)** | ⚙️ .env.local 환경 변수 설정                | 개발자 |
+| **[docs/guides/FIREBASE_GUIDE.md](./docs/guides/FIREBASE_GUIDE.md)**               | 🔔 Firebase 푸시 알림 단계별 설정 (Phase 2) | 개발자 |
+| **[docs/guides/KAKAO_MAP_GUIDE.md](./docs/guides/KAKAO_MAP_GUIDE.md)**             | 🗺️ 카카오맵 지도 단계별 설정 (Phase 3)      | 개발자 |
+
+**→ [docs/ 폴더 바로 가기](./docs/)**
+
+---
+
 ## 🚀 빠른 시작
 
 ### 필수 요구사항
 
 - Node.js 16+
 - npm 또는 yarn
+
+### 개발 시작 체크리스트
+
+1. **필수 정보 수집**: [docs/TASK_MANAGEMENT.md](./docs/TASK_MANAGEMENT.md#필수-정보-수집-체크리스트) 확인
+2. **환경 변수 설정**: [docs/guides/ENVIRONMENT_VARIABLES.md](./docs/guides/ENVIRONMENT_VARIABLES.md) 따라하기
+3. **API 설정**: [docs/API_SETUP.md](./docs/API_SETUP.md) 또는 각 API별 가이드 확인
+4. **개발 시작**: 아래 설치 및 실행 단계 진행
 
 ### 설치 및 실행
 

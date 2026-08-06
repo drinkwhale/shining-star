@@ -1,36 +1,36 @@
 export default function Details() {
-  const eventDate = new Date("2024-12-25T11:00:00").toLocaleDateString(
-    "ko-KR",
+  const eventDate = new Date('2024-12-25T11:00:00').toLocaleDateString(
+    'ko-KR',
     {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      weekday: "long",
-    },
-  );
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      weekday: 'long',
+    }
+  )
 
   const details = [
     {
-      icon: "📅",
-      label: "날짜",
+      icon: '📅',
+      label: '날짜',
       value: eventDate,
     },
     {
-      icon: "⏰",
-      label: "시간",
-      value: "오전 11:00 ~ 오후 3:00",
+      icon: '⏰',
+      label: '시간',
+      value: '오전 11:00 ~ 오후 3:00',
     },
     {
-      icon: "📍",
-      label: "장소",
-      value: "서울 강남구 \n컨벤션 홀",
+      icon: '📍',
+      label: '장소',
+      value: '서울 강남구 \n컨벤션 홀',
     },
     {
-      icon: "🎂",
-      label: "아이",
-      value: "김OO\n(생년월일: 2023년 12월 25일)",
+      icon: '🎂',
+      label: '아이',
+      value: '김OO\n(생년월일: 2023년 12월 25일)',
     },
-  ];
+  ]
 
   return (
     <section
@@ -67,5 +67,5 @@ export default function Details() {
         </ul>
       </div>
     </section>
-  );
+  )
 }

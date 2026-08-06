@@ -1,46 +1,46 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 interface Image {
-  id: number;
-  src: string;
-  alt: string;
+  id: number
+  src: string
+  alt: string
 }
 
 export default function Gallery() {
-  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
+  const [selectedImage, setSelectedImage] = useState<Image | null>(null)
 
   const images: Image[] = [
     {
       id: 1,
-      src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
-      alt: "아기 사진 1",
+      src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+      alt: '아기 사진 1',
     },
     {
       id: 2,
-      src: "https://images.unsplash.com/photo-1503454537688-e0e3e7491e91?w=400&h=300&fit=crop",
-      alt: "아기 사진 2",
+      src: 'https://images.unsplash.com/photo-1503454537688-e0e3e7491e91?w=400&h=300&fit=crop',
+      alt: '아기 사진 2',
     },
     {
       id: 3,
-      src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&q=50",
-      alt: "아기 사진 3",
+      src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&q=50',
+      alt: '아기 사진 3',
     },
     {
       id: 4,
-      src: "https://images.unsplash.com/photo-1503454537688-e0e3e7491e91?w=400&h=300&fit=crop&q=50",
-      alt: "아기 사진 4",
+      src: 'https://images.unsplash.com/photo-1503454537688-e0e3e7491e91?w=400&h=300&fit=crop&q=50',
+      alt: '아기 사진 4',
     },
     {
       id: 5,
-      src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&q=40",
-      alt: "아기 사진 5",
+      src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&q=40',
+      alt: '아기 사진 5',
     },
     {
       id: 6,
-      src: "https://images.unsplash.com/photo-1503454537688-e0e3e7491e91?w=400&h=300&fit=crop&q=40",
-      alt: "아기 사진 6",
+      src: 'https://images.unsplash.com/photo-1503454537688-e0e3e7491e91?w=400&h=300&fit=crop&q=40',
+      alt: '아기 사진 6',
     },
-  ];
+  ]
 
   return (
     <section className="container-section bg-korean-cream">
@@ -91,5 +91,5 @@ export default function Gallery() {
         </div>
       )}
     </section>
-  );
+  )
 }

@@ -1,34 +1,34 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 interface RSVPProps {
-  isOpen: boolean;
-  onClose: () => void;
+  isOpen: boolean
+  onClose: () => void
 }
 
 export default function RSVP({ isOpen, onClose }: RSVPProps) {
   const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    attendance: "yes",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
+    name: '',
+    phone: '',
+    attendance: 'yes',
+    message: '',
+  })
+  const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+    e.preventDefault()
+    setSubmitted(true)
 
-    const whatsappLink = `https://api.whatsapp.com/send?phone=82010000000&text=안녕하세요!%0A${encodeURIComponent(formData.name)}입니다.%0A%0A돌잔치 ${formData.attendance === "yes" ? "참석합니다!" : "못 갑니다."}%0A${formData.message ? `메시지: ${formData.message}` : ""}`;
-    window.open(whatsappLink, "_blank");
+    const whatsappLink = `https://api.whatsapp.com/send?phone=82010000000&text=안녕하세요!%0A${encodeURIComponent(formData.name)}입니다.%0A%0A돌잔치 ${formData.attendance === 'yes' ? '참석합니다!' : '못 갑니다.'}%0A${formData.message ? `메시지: ${formData.message}` : ''}`
+    window.open(whatsappLink, '_blank')
 
     setTimeout(() => {
-      onClose();
-      setFormData({ name: "", phone: "", attendance: "yes", message: "" });
-      setSubmitted(false);
-    }, 1000);
-  };
+      onClose()
+      setFormData({ name: '', phone: '', attendance: 'yes', message: '' })
+      setSubmitted(false)
+    }, 1000)
+  }
 
-  if (!isOpen) return null;
+  if (!isOpen) return null
 
   return (
     <div
@@ -94,7 +94,7 @@ export default function RSVP({ isOpen, onClose }: RSVPProps) {
                   <input
                     type="radio"
                     value="yes"
-                    checked={formData.attendance === "yes"}
+                    checked={formData.attendance === 'yes'}
                     onChange={(e) =>
                       setFormData({ ...formData, attendance: e.target.value })
                     }
@@ -106,7 +106,7 @@ export default function RSVP({ isOpen, onClose }: RSVPProps) {
                   <input
                     type="radio"
                     value="no"
-                    checked={formData.attendance === "no"}
+                    checked={formData.attendance === 'no'}
                     onChange={(e) =>
                       setFormData({ ...formData, attendance: e.target.value })
                     }
@@ -148,5 +148,5 @@ export default function RSVP({ isOpen, onClose }: RSVPProps) {
         )}
       </div>
     </div>
-  );
+  )
 }
