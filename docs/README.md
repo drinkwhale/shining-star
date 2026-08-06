@@ -14,7 +14,7 @@
 
 ### 🔧 API 설정 가이드
 
-- **[전체 API 설정](./API_SETUP.md)** — Firebase, 카카오맵, 네이버맵 설정
+- **[전체 API 설정](./API_SETUP.md)** — 카카오맵, 네이버맵 설정
 - **[카카오맵 설정](./guides/KAKAO_MAP_GUIDE.md)** — 지도 연동 (Phase 2, 필수)
 - **네이버맵 설정** — 길찾기용 데스크톱 지도 (API_SETUP.md에 포함, API 키 불필요)
 
@@ -45,7 +45,6 @@ docs/
 │   └─ 진행 상태 추적
 │
 ├── API_SETUP.md
-│   ├─ Firebase 설정 (푸시 알림)
 │   ├─ 카카오맵 설정 (지도 표시, 필수)
 │   ├─ 네이버맵 설정 (길찾기용, API 키 불필요)
 │   ├─ 환경 변수 템플릿
@@ -158,21 +157,6 @@ docs/
 
 - 프로젝트 초기 설정
 - 환경 변수 추가 필요 시
-
-### guides/FIREBASE_GUIDE.md
-
-**Firebase 단계별 설정**
-
-- 프로젝트 생성 (스크린샷 포함)
-- 웹 앱 등록
-- VAPID 키 생성
-- Service Worker 설정
-- 로컬 테스트
-
-**언제 참고?**
-
-- Phase 2 시작 (T2-1)
-- Firebase 에러 발생 시
 
 ### guides/KAKAO_MAP_GUIDE.md
 

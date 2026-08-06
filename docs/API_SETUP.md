@@ -7,126 +7,12 @@
 
 ## 목차
 
-1. [Firebase 설정](#firebase-설정) — 푸시 알림 (Phase 2)
-2. [카카오맵 설정](#카카오맵-설정) — 지도 연동 (Phase 2)
-3. [네이버맵 설정](#네이버맵-설정) — 길찾기용 (선택, API 키 불필요)
-4. [환경 변수 템플릿](#환경-변수-템플릿)
-5. [각 파일별 사용 위치](#각-파일별-사용-위치)
-6. [로컬 테스트](#로컬-테스트)
-7. [배포 시 환경 변수](#배포-시-환경-변수)
-
----
-
-## Firebase 설정
-
-### 개요
-
-Firebase Cloud Messaging (FCM)을 사용하여 푸시 알림을 구현합니다.
-
-**필수 버전**: Firebase SDK v9.0.0+
-
-### 단계 1: Firebase 프로젝트 생성
-
-1. [Firebase Console](https://console.firebase.google.com) 방문
-2. **"새 프로젝트 만들기"** 클릭
-3. 프로젝트 이름: `shining-star-invitations` (또는 선호하는 이름)
-4. 구글 애널리틱스: 선택 (선택사항)
-5. **"프로젝트 만들기"** 클릭
-
-### 단계 2: 웹 앱 등록
-
-1. Firebase Console 프로젝트 대시보드
-2. **"웹앱 추가"** (</> 아이콘) 클릭
-3. 앱 닉네임: `shining-star-web`
-4. **"앱 등록"** 클릭
-5. 다음 정보 복사:
-   ```
-   apiKey: "AIzaSy..."
-   authDomain: "shining-star-invitations.firebaseapp.com"
-   projectId: "shining-star-invitations"
-   storageBucket: "shining-star-invitations.appspot.com"
-   messagingSenderId: "123456789"
-   appId: "1:123456789:web:abcdef123456"
-   ```
-
-### 단계 3: VAPID 키 생성
-
-1. Firebase Console → 프로젝트 설정 (⚙️ 아이콘)
-2. **"Cloud Messaging"** 탭 클릭
-3. **"웹 구성"** 섹션
-4. **"새 키 쌍 생성"** 클릭
-5. **Public Key** 복사 (`.env.local`에 저장)
-
-### 단계 4: Service Worker 권한 활성화
-
-1. Firebase Console → **"Messaging"** (왼쪽 메뉴)
-2. **"시작하기"** 또는 **"설정"** 클릭
-3. 안내 따라 완료
-
-### 환경 변수
-
-```env
-VITE_FIREBASE_API_KEY=AIzaSy...
-VITE_FIREBASE_AUTH_DOMAIN=shining-star-invitations.firebaseapp.com
-VITE_FIREBASE_PROJECT_ID=shining-star-invitations
-VITE_FIREBASE_STORAGE_BUCKET=shining-star-invitations.appspot.com
-VITE_FIREBASE_MESSAGING_SENDER_ID=123456789
-VITE_FIREBASE_APP_ID=1:123456789:web:abcdef123456
-VITE_VAPID_PUBLIC_KEY=ABCD1234...
-```
-
-### 초기화 코드
-
-`src/utils/firebase.ts`:
-
-```typescript
-import { initializeApp } from 'firebase/app'
-import { getMessaging, onMessage } from 'firebase/messaging'
-
-const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-}
-
-export const app = initializeApp(firebaseConfig)
-export const messaging = getMessaging(app)
-
-// 포그라운드 메시지 처리
-onMessage(messaging, (payload) => {
-  console.log('Message received:', payload)
-  // UI 업데이트 로직
-})
-```
-
-### Service Worker에서 VAPID 설정
-
-`public/sw.js`:
-
-```javascript
-// Service Worker 등록 시점에서 VAPID 키 설정
-self.addEventListener('push', (event) => {
-  const data = event.data.json()
-  const options = {
-    body: data.body,
-    icon: '/public/icons/icon-192.png',
-    badge: '/public/icons/badge-72.png',
-    data: data.data || {},
-  }
-  event.waitUntil(self.registration.showNotification(data.title, options))
-})
-```
-
-### 테스트 메시지 발송
-
-1. Firebase Console → **"Messaging"** → **"새 캠페인 만들기"**
-2. **"Firebase Notification messages"** 선택
-3. 제목 & 본문 입력
-4. **"검토"** → **"공개"** 클릭
-5. 브라우저에서 알림 수신 확인
+1. [카카오맵 설정](#카카오맵-설정) — 지도 연동 (Phase 2)
+2. [네이버맵 설정](#네이버맵-설정) — 길찾기용 (선택, API 키 불필요)
+3. [환경 변수 템플릿](#환경-변수-템플릿)
+4. [각 파일별 사용 위치](#각-파일별-사용-위치)
+5. [로컬 테스트](#로컬-테스트)
+6. [배포 시 환경 변수](#배포-시-환경-변수)
 
 ---
 
@@ -412,22 +298,6 @@ const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
 ---
 
 ## 각 파일별 사용 위치
-
-### Firebase 설정
-
-| 파일                                    | Phase | 용도                       |
-| --------------------------------------- | ----- | -------------------------- |
-| `src/utils/firebase.ts`                 | 2     | Firebase 초기화            |
-| `public/sw.js`                          | 2     | Service Worker 푸시 핸들러 |
-| `src/components/NotificationPrompt.tsx` | 2     | 권한 요청                  |
-| `.env.local`                            | 2     | API 키 저장                |
-
-**설정 읽기 순서**:
-
-1. `.env.local`에서 환경 변수 로드
-2. `src/utils/firebase.ts`에서 Firebase 초기화
-3. `src/App.tsx`에서 `firebase.ts` import
-4. `public/sw.js`에서 Service Worker 푸시 처리
 
 ### 카카오맵 설정
 

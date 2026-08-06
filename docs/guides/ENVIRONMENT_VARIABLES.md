@@ -86,11 +86,10 @@ nano .env.local
 
 ```env
 # ✅ 올바른 형식
-VITE_FIREBASE_API_KEY=AIzaSyDx1234567890abc...
 VITE_KAKAO_MAP_API_KEY=1234567890abcdef...
 
 # ❌ 잘못된 형식
-VITE_FIREBASE_API_KEY = "AIzaSyDx..." (공백/따옴표 불필요)
+VITE_KAKAO_MAP_API_KEY = "1234567890..." (공백/따옴표 불필요)
 VITE_KAKAO_MAP_API_KEY: 1234567890... (콜론 사용 금지)
 ```
 
@@ -173,7 +172,6 @@ import.meta.env.SECRET_KEY
 VITE_KAKAO_MAP_API_KEY=1234567890abcdef...
 
 # 로컬 개발용
-VITE_API_BASE_URL=http://localhost:3000
 VITE_DEBUG=true
 VITE_LOG_LEVEL=debug
 ```
@@ -185,7 +183,6 @@ VITE_LOG_LEVEL=debug
 VITE_KAKAO_MAP_API_KEY=1234567890abcdef...
 
 # 스테이징 서버용 설정
-VITE_API_BASE_URL=https://staging-api.example.com
 VITE_DEBUG=false
 VITE_LOG_LEVEL=info
 ```
