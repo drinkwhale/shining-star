@@ -1,0 +1,42 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  html {
+    font-family: "Noto Sans KR", sans-serif;
+    @apply bg-korean-cream text-korean-navy;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-serif font-bold;
+  }
+}
+
+@layer components {
+  .container-section {
+    @apply w-full px-4 py-12 md:px-6 md:py-16;
+  }
+
+  .btn-primary {
+    @apply inline-block px-8 py-3 bg-korean-red text-white rounded-full font-medium transition-transform hover:scale-105 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply inline-block px-8 py-3 bg-korean-gold text-korean-navy rounded-full font-medium transition-transform hover:scale-105 active:scale-95;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg;
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  @apply bg-korean-red text-white;
+}
